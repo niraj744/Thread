@@ -76,6 +76,8 @@ export async function POST(req: Request) {
   if (evt.type === "organizationMembership.created") {
     try {
       const { organization, public_user_data } = evt.data;
+      console.log(organization, public_user_data);
+
       await addMemberToCommunity(organization.id, public_user_data.user_id);
       return NextResponse.json(
         { message: "Invitation accepted" },
