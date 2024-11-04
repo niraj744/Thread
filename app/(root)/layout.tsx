@@ -11,7 +11,7 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
   const user = await currentUser();
   if (!user) return null;
   const getuser = await getUserById(user.id);
-  if (!getuser.onboarded) return redirect("/auth/onboard");
+  if (getuser.onboarded === false) return redirect("/auth/onboard");
   return (
     <>
       <Header />
